@@ -1,0 +1,8 @@
+<div class='resources'>
+  {{#each @resources as |resource|}}
+    <Resource
+      @resource={{resource}}
+      @location={{this.getLocationForResource resource @locations}}
+    />
+  {{/each}}
+</div>
