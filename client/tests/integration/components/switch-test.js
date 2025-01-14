@@ -3,24 +3,31 @@ import { setupRenderingTest } from 'client/tests/helpers';
 import { render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 
-module('Integration | Component | toggle', function (hooks) {
+module('Integration | Component | switch', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function (assert) {
-    // Set any properties with this.set('myProperty', 'value');
-    // Handle any actions with this.set('myAction', function(val) { ... });
+    this.setProperties({
+      checked: false,
+      size: undefined,
+    });
 
-    await render(hbs`<Toggle />`);
+    // Renders as normal
+    await render(hbs`<Switch @checked={{this.checked}} @size={{this.size}} />`);
 
-    assert.dom().hasText('');
+    assert.dom('.switch').exists();
+    assert.dom('.switch').hasAttribute('class', 'switch '); // Size class not present
+    assert.dom('.switch input[type="checkbox"]:not(:checked)').exists();
+    assert.dom('.switch .slider').exists();
 
-    // Template block usage:
-    await render(hbs`
-      <Toggle>
-        template block text
-      </Toggle>
-    `);
+    // Checkbox updates
+    this.set('checked', true);
 
-    assert.dom().hasText('template block text');
+    assert.dom('.switch input[type="checkbox"]:checked').exists();
+
+    // Size updates
+    this.set('size', 'large');
+
+    assert.dom('.switch').hasClass('large');
   });
 });

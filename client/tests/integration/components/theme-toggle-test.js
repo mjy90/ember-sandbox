@@ -7,20 +7,11 @@ module('Integration | Component | theme-toggle', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function (assert) {
-    // Set any properties with this.set('myProperty', 'value');
-    // Handle any actions with this.set('myAction', function(val) { ... });
-
     await render(hbs`<ThemeToggle />`);
 
-    assert.dom().hasText('');
-
-    // Template block usage:
-    await render(hbs`
-      <ThemeToggle>
-        template block text
-      </ThemeToggle>
-    `);
-
-    assert.dom().hasText('template block text');
+    assert.dom('.theme-toggle').exists();
+    assert.dom('.theme-toggle svg.fa-moon').exists();
+    assert.dom('.theme-toggle .switch').exists();
+    assert.dom('.theme-toggle svg.fa-sun').exists();
   });
 });
