@@ -1,0 +1,75 @@
+/**
+ * Theme Variables
+ */
+$vermilion: #E95244;
+$dark-green: #1F2B1D;
+$apple-green: #8ea604;
+$amber: #f5bb00;
+$gamboge: #ec9f05;
+
+$paper-grey: #f4f2f3;
+$space-grey: #53464D;
+$dark-bg: #1e1e1e;
+
+$max-elevation: 10;
+
+// Default (dark theme)
+:root {
+  --primary: #{$vermilion};
+  --secondary: #{$dark-green};
+  --text-color: #{$paper-grey};
+  --background-color: #{$dark-bg};
+  --box-shadow-color: #{$space-grey};
+  // Generate backgrounds for different elevations
+  // Dark theme expresses elevation through surface brightness.
+  @for $i from 1 through $max-elevation {
+    --background-color-#{$i}: #{lighten($dark-bg, $i * 5%)};
+  }
+  // Generate box shadows for different elevations
+  // Dark theme does not express elevation through shadow.
+  @for $i from 1 through $max-elevation {
+    --box-shadow-#{$i}: 0px 0px;
+  }
+}
+
+.light {
+  --primary: #{$vermilion};
+  --secondary: #{$dark-green};
+  --text-color: black;
+  --background-color: #{$paper-grey};
+  // Generate backgrounds for different elevations
+  // Light theme does not express elevation through surface brightness.
+  @for $i from 1 through $max-elevation {
+    --background-color-#{$i}: #{$paper-grey};
+  }
+  // Generate box shadows for different elevations
+  // Light theme expresses elevation through shadow.
+  @for $i from 1 through $max-elevation {
+    --box-shadow-#{$i}: #{$i * 1px} #{$i * 1px} #{$i * 1px + 2px} var(--box-shadow-color);
+  }
+ }
+
+.dark {
+  --primary: #FFB4AA;
+  --secondary: #BCCBB6;
+  --text-color: #{$paper-grey};
+  --background-color: #{$dark-bg};
+  // Generate backgrounds for different elevations
+  // Dark theme expresses elevation through surface brightness.
+  @for $i from 1 through $max-elevation {
+    --background-color-#{$i}: #{lighten($dark-bg, $i * 5%)};
+  }
+  // Generate box shadows for different elevations
+  // Dark theme does not express elevation through shadow.
+  @for $i from 1 through $max-elevation {
+    --box-shadow-#{$i}: 0px 0px;
+  }
+}
+
+// Generate classes for different elevations
+@for $i from 1 through $max-elevation {
+  .elevation-#{$i} {
+    background-color: var(--background-color-#{$i});
+    box-shadow: var(--box-shadow-#{$i});
+  }
+}
