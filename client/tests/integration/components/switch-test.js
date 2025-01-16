@@ -10,13 +10,20 @@ module('Integration | Component | switch', function (hooks) {
     this.setProperties({
       checked: false,
       size: undefined,
+      contrast: undefined,
     });
 
     // Renders as normal
-    await render(hbs`<Switch @checked={{this.checked}} @size={{this.size}} />`);
+    await render(hbs`
+      <Switch
+        @checked={{this.checked}}
+        @size={{this.size}}
+        @contrast={{this.contrast}}
+      />
+    `);
 
     assert.dom('.switch').exists();
-    assert.dom('.switch').hasAttribute('class', 'switch '); // Size class not present
+    assert.dom('.switch').hasAttribute('class', 'switch'); // Size and contrast classes not present
     assert.dom('.switch input[type="checkbox"]:not(:checked)').exists();
     assert.dom('.switch .slider').exists();
 
@@ -29,5 +36,10 @@ module('Integration | Component | switch', function (hooks) {
     this.set('size', 'large');
 
     assert.dom('.switch').hasClass('large');
+
+    // Contrast updates
+    this.set('contrast', true);
+
+    assert.dom('.switch').hasClass('contrast');
   });
 });

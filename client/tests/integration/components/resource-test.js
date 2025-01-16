@@ -36,11 +36,11 @@ module('Integration | Component | resource', function (hooks) {
     await render(hbs`<Resource @resource={{this.resource}} @location={{this.location}} />`);
 
     assert.dom('.resource').exists();
-    assert.dom('.resource .image img').hasAttribute('alt', 'Preview image');
+    assert.dom('.resource img').hasAttribute('alt', 'Preview image');
     assert.dom('.resource .details .metadata')
       .containsText('Sweet Potato Homestead')
       .containsText('Cost of materials');
     assert.dom('.resource .details .description').hasText('Learn to whittle a spoon!');
-    assert.dom('.resource .details button').hasText('Sign Up');
+    assert.dom('.resource .details button').hasText('Contact Organizer');
   });
 });

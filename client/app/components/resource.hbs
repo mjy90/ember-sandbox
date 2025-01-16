@@ -1,13 +1,14 @@
 <div class='resource'>
-  <div class='image'>
+  <button class='image'>
     <img src={{this.imageUrl @resource}} alt='Preview image' />
-  </div>
+  </button>
   <div class='details'>
-    <h3>{{@resource.title}}</h3>
-    <p class='metadata'>{{@location.name}} • {{this.exchangeLabel @resource}}</p>
+    <h2>{{@resource.title}}</h2>
+    <p class='metadata lightweight italic'>{{@location.name}}  •  {{this.exchangeLabel @resource}}</p>
     <p class='description'>{{@resource.description}}</p>
+    <div class='spacer' />
     <button type='button' {{ on 'click' (fn this.signUp @resource) }}>
-      Sign Up
+      Contact Organizer
     </button>
   </div>
 </div>

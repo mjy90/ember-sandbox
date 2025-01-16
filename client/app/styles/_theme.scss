@@ -1,9 +1,13 @@
-/**
- * Theme Variables
- */
+@use 'sass:color';
+
+/*
+** Theme Variables
+**/
 $vermilion: #E95244;
+$light-vermilion: #{color.scale($vermilion, $lightness: 25%)};
 $dark-green: #1F2B1D;
 $apple-green: #8ea604;
+$sage-green: #9caf88;
 $amber: #f5bb00;
 $gamboge: #ec9f05;
 
@@ -15,9 +19,10 @@ $max-elevation: 10;
 
 // Default (dark theme)
 :root {
-  --primary: #{$vermilion};
-  --secondary: #{$dark-green};
+  --primary: #{$light-vermilion};
+  --secondary: #{$sage-green};
   --text-color: #{$paper-grey};
+  --contrast-text-color: black;
   --background-color: #{$dark-bg};
   --box-shadow-color: #{$space-grey};
   // Generate backgrounds for different elevations
@@ -34,8 +39,9 @@ $max-elevation: 10;
 
 .light {
   --primary: #{$vermilion};
-  --secondary: #{$dark-green};
+  --secondary: #{$apple-green};
   --text-color: black;
+  --contrast-text-color: #{$paper-grey};
   --background-color: #{$paper-grey};
   // Generate backgrounds for different elevations
   // Light theme does not express elevation through surface brightness.
@@ -50,9 +56,10 @@ $max-elevation: 10;
  }
 
 .dark {
-  --primary: #FFB4AA;
-  --secondary: #BCCBB6;
+  --primary: #{$light-vermilion};
+  --secondary: #{$sage-green};
   --text-color: #{$paper-grey};
+  --contrast-text-color: black;
   --background-color: #{$dark-bg};
   // Generate backgrounds for different elevations
   // Dark theme expresses elevation through surface brightness.
@@ -72,4 +79,26 @@ $max-elevation: 10;
     background-color: var(--background-color-#{$i});
     box-shadow: var(--box-shadow-#{$i});
   }
+}
+
+/*
+** Text modifiers
+**/
+.lightweight {
+  font-weight: 400;
+}
+
+.heavyweight {
+  font-weight: 800;
+}
+
+.italic {
+  font-style: italic;
+}
+
+/*
+** Flex utilities
+*/
+.spacer {
+  flex-grow: 1;
 }

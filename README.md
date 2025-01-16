@@ -6,7 +6,9 @@ A digital hub for Mututal Aid Networks, written to learn EmberJS and explore the
 - [x] List resources
 - [ ] Community guidelines page
 - [ ] Contact Us page
-- [ ] Styles
+- [x] Styles
+- [x] Integration tests
+- [ ] Unit tests
 
 ## Backend PoC
 - [ ] Mock API?

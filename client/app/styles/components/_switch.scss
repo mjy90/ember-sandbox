@@ -2,21 +2,22 @@ $sm-height: 24px;
 $md-height: 32px;
 $lg-height: 40px;
 
-/* The switch - the pill around the slider */
 .switch {
   --height: #{$md-height};
   --padding: 4px;
 
   position: relative;
   display: inline-block;
-  aspect-ratio: 1.75 / 1;
+  margin: 0px;
   height: var(--height);
+  aspect-ratio: 1.75 / 1;
+  // width: calc(var(--height) * 1.75);
 }
 
 .switch.small,
 .switch.sm {
   --height: #{$sm-height};
-  --padding: 0px;
+  --padding: 1px;
 }
 
 .switch.large,
@@ -31,7 +32,7 @@ $lg-height: 40px;
   height: 0;
 }
 
-/* The slider */
+/* The pill around the knob */
 .slider {
   position: absolute;
   cursor: pointer;
@@ -39,21 +40,10 @@ $lg-height: 40px;
   left: 0;
   right: 0;
   bottom: 0;
+  height: inherit;
+  aspect-ratio: inherit;
   border-radius: var(--height); // Always round
-  background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-.slider:before {
-  position: absolute;
-  content: "";
-  aspect-ratio: 1;
-  height: calc(var(--height) - (2 * var(--padding)));
-  left: var(--padding);
-  bottom: var(--padding);
-  border-radius: 50%;
-  background-color: white;
+  background-color: var(--text-color);
   -webkit-transition: .4s;
   transition: .4s;
 }
@@ -62,9 +52,28 @@ input:checked + .slider {
   background-color: var(--secondary);
 }
 
-input:focus + .slider {
-  box-shadow: 0 0 1px var(--secondary);
+.contrast .slider,
+.contrast input:checked + .slider {
+  background-color: var(--background-color);
 }
+
+/* The knob */
+.slider:before {
+  position: absolute;
+  content: "";
+  aspect-ratio: 1;
+  height: calc(var(--height) - (2 * var(--padding)));
+  left: var(--padding);
+  bottom: var(--padding);
+  border-radius: 50%;
+  background-color: var(--background-color);
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+// input:focus + .slider {
+//   box-shadow: 0 0 1px var(--secondary);
+// }
 
 input:checked + .slider:before {
   --slide-distance: calc(var(--height) * .75);
@@ -72,3 +81,12 @@ input:checked + .slider:before {
   -ms-transform: translateX(var(--slide-distance));
   transform: translateX(var(--slide-distance));
 }
+
+.contrast .slider:before,
+.contrast input:checked + .slider:before {
+  background-color: var(--primary);
+}
+
+// .contrast input:checked + .slider:before {
+//   background-color: var(--secondary);
+// }

@@ -1,0 +1,206 @@
+// .resources label span {
+//   font-size: 140%;
+//   margin: 50px auto 20px;
+//   display: block;
+//   text-align: center;
+//   font-style: italic;
+// }
+
+.resources form p {
+  font-size: 80%;
+  display: block;
+  text-align: center;
+}
+
+.resources input {
+  padding: 11px;
+  font-size: 18px;
+  width: 500px;
+  margin: 20px auto 50px;
+  background-color: rgb(255 255 255 / 75%);
+  border: solid 1px lightgray;
+  display: block;
+}
+
+/**
+ * Individual resource Listing
+ */
+
+.resource {
+  background-color: var(--background-color-1);
+  box-shadow: var(--box-shadow-1);
+  display: flex;
+  justify-content: stretch;
+  margin-top: 15px;
+  border-radius: 10px;
+}
+
+.resource:hover {
+  background-color: var(--background-color-2);
+  box-shadow: var(--box-shadow-2);
+}
+
+.resource .image {
+  text-align: center;
+}
+
+.resource button.image {
+  // position: relative;
+  flex-basis: 33.3%;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  z-index: 1;
+  line-height: .5; // Force button to image height
+}
+
+.resource button.image:focus {
+  outline: none;
+}
+
+// .resource button.image::after {
+//   content: "";
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   height: 100%;
+//   z-index: -1;
+//   margin: -20px;
+//   padding: 20px;
+//   border-radius: 5px;
+//   // background: #016aba;
+//   opacity: 0;
+//   transition: opacity 0.25s ease-in-out;
+// }
+
+.resource button.image:focus::after,
+.resource button.image:hover::after {
+  opacity: 0.1;
+}
+
+.resource img {
+  width: 100%;
+  border-radius: 10px 0px 0px 10px;
+}
+
+// .resource .image.large {
+//   margin: 30px 25px 50px;
+//   flex-basis: 100%;
+// }
+
+// .resource .image small {
+//   display: block;
+//   margin-top: 5px;
+//   margin-bottom: -15px;
+//   text-align: center;
+//   color: #016aba;
+
+//   /* This is needed to fix a safari clipping issue */
+//   position: relative;
+// }
+
+// .resource .image.large small {
+//   margin-top: 10px;
+//   margin-bottom: 0;
+//   font-size: 110%;
+// }
+
+/*
+** Details
+*/
+
+.resource .details {
+  flex-basis: 66.7%;
+  margin: 20px 25px;
+  display: flex;
+  flex-direction: column;
+  place-content: space-between space-between;
+}
+
+.resource .map {
+  flex-grow: 0;
+  flex-basis: 150px;
+  font-size: 0;
+  margin: 0 25px;
+}
+
+.resource .map img {
+  width: 150px;
+  height: 150px;
+}
+
+.resource.detailed {
+  background: none;
+  align-items: flex-start;
+}
+
+.resource.detailed .image {
+  flex-basis: 320px;
+}
+
+.resource.detailed .image.large {
+  margin: 30px 25px 50px;
+  flex-basis: 100%;
+}
+
+.resource.detailed .details {
+  height: auto;
+}
+
+.resource.detailed h3 {
+  font-size: 200%;
+  margin-bottom: 10px;
+}
+
+.resource.detailed .detail {
+  margin: 5px 0;
+  flex-basis: 100%;
+  flex-shrink: 2;
+}
+
+.resource.detailed .description {
+  white-space: normal;
+  flex-basis: 100%;
+  flex-shrink: 1;
+}
+
+.resource.detailed .map {
+  flex-basis: 100%;
+  margin: 50px 25px 25px;
+}
+
+.resource.detailed .map img {
+  width: 100%;
+  height: auto;
+}
+
+@media only screen and (max-width: 919px) {
+  .resource.detailed .image,
+  .resource.detailed .image.large {
+    margin: 30px 25px 25px;
+    flex-basis: 100%;
+    cursor: default;
+  }
+
+  .resource.detailed .image:hover {
+    flex-basis: 100%;
+    cursor: default;
+  }
+
+  .resource.detailed .image small {
+    display: none;
+  }
+
+  .resource.detailed button.image:hover::after {
+    opacity: 0;
+  }
+
+  .resource.detailed button.image:focus::after {
+    opacity: 0.1;
+  }
+
+  .resource.detailed .map {
+    margin-top: 25px;
+  }
+}

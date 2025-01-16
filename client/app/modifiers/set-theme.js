@@ -3,8 +3,6 @@ import { modifier } from 'ember-modifier';
 export default modifier((_, [theme, allThemes]) => {
   const html = document.querySelector('html');
 
-  console.log('setting theme', theme, allThemes)
-
   // Already done
   if (html.classList.contains(theme)) return;
 
